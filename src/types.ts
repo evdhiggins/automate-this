@@ -2,6 +2,11 @@ export interface IItem {
   [index: string]: any;
 }
 
+export interface ITask {
+  (nightmare: any, items: IItem[]): Promise<void>;
+  (nightmare: any, items: IItem): Promise<void>;
+}
+
 export interface ISelector {
   /**
    * A CSS selector string used to locate the corresponding item field element
@@ -103,29 +108,19 @@ export interface ILoginConfig {
 
 export interface IActionConfig {
   /**
-   * The CSS selector used to signal the page as rendered. If no selector string is given, `body` is used.
-   **/
-  waitBeforeSelector?: string;
-
-  /**
-   * The number of milliseconds to wait after executing the nightmareFunc and/or the evaluateFunc. 'Waited' before `waitAfterSelector`
+   * An array of functions that will each be executed once
    */
-  waitAfterMilliseconds?: number;
+  beforeTasks?: ITask[];
 
   /**
-   * The CSS selector waited for after executing the nightmareFunc and/or the evaluateFunc. 'Waited' after `waitAfterMilliSeconds`
-   **/
-  waitAfterSelector?: string;
-
-  /**
-   * A async function given the initialized nightmare class as an argument. All item actions are expected to be done in this function
+   * An array of functions that will each be executed once for each item
    */
-  nightmareFunc?: (nightmare: any) => Promise<void>;
+  forEachTasks?: ITask[];
 
   /**
-   * A function evaluated in the browser window via nightmare.evalute. `evaluateFunc` is evaluated after `nightmareFunc`
+   * An array of functions that will each be executed once
    */
-  evaluateFunc?: () => Promise<void>;
+  afterTasks?: ITask[];
 }
 
 export interface IConfig {

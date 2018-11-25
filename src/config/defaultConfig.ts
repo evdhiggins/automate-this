@@ -5,15 +5,15 @@ export const page: IPage = {
   itemSelector: "div > div.views-field-nothing > span.field-content",
   itemUrl: {
     pattern: "a",
-    prop: "href"
+    prop: "href",
   },
-  waitBeforeSelector: ".node"
+  waitBeforeSelector: ".node",
 };
 
 export const itemListConfig: IItemListConfig = {
   itemBases: [],
   itemCreator: () => [],
-  items: []
+  items: [],
 };
 
 export const loginConfig: ILoginConfig = {
@@ -21,11 +21,11 @@ export const loginConfig: ILoginConfig = {
   usernameInputSelector: "#edit-name",
   passwordInputSelector: "#edit-pass",
   loginButtonSelector: "#edit-submit",
-  waitAfterSelector: "#block-user-1"
+  waitAfterSelector: "#block-user-1",
 };
 
 export const actionConfig: IActionConfig = {
-  waitBeforeSelector: "body",
-  waitAfterMilliseconds: 1000,
-  waitAfterSelector: "body"
+  beforeTasks: [],
+  forEachTasks: [],
+  afterTasks: [],
 };

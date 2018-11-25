@@ -98,14 +98,12 @@ const makeActionConfig = (
   customConfig: IActionConfig = {}
 ): IActionConfig => {
   return {
-    waitBeforeSelector:
-      customConfig.waitBeforeSelector || defaultConfig.waitBeforeSelector,
-    waitAfterMilliseconds:
-      customConfig.waitAfterMilliseconds || defaultConfig.waitAfterMilliseconds,
-    waitAfterSelector:
-      customConfig.waitAfterSelector || defaultConfig.waitAfterSelector,
-    nightmareFunc: customConfig.nightmareFunc || defaultConfig.nightmareFunc,
-    evaluateFunc: customConfig.evaluateFunc || defaultConfig.evaluateFunc
+    beforeTasks:
+      customConfig.beforeTasks || defaultConfig.beforeTasks,
+    forEachTasks:
+      customConfig.forEachTasks || defaultConfig.forEachTasks,
+    afterTasks:
+      customConfig.afterTasks || defaultConfig.afterTasks,
   };
 };
 
@@ -113,7 +111,7 @@ export default (): IConfig => {
   let customConfig: any;
   const customConfigPath: PathLike = resolve(
     __dirname,
-    "../../..",
+    "../..",
     process.env.SCRIPT_CONFIG || ""
   );
   console.log(`Looking for custom config at ${customConfigPath}`);

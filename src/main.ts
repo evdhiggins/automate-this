@@ -5,11 +5,13 @@ import nightmare from "./automateThis/initializers/nightmare";
 import loadConfig from "./config/loadConfig";
 import getItemsFromPage from "./automateThis/nightmare/getItemsFromPage";
 import login from "./automateThis/nightmare/login";
-import performAction from "./automateThis/nightmare/performAction";
 import { IItem } from "./types";
+import RunnerClass from "./automateThis/classes/Runner.class";
 
 const main = async (): Promise<void> => {
   const config = loadConfig();
+
+  await login(nightmare, config.login);
 
   // obtain all urls to be used when performing actions
   // item urls provided via ItemListConfig are used as the base of the url array
@@ -19,12 +21,13 @@ const main = async (): Promise<void> => {
     items = items.concat(pageItems);
   }
 
-  await login(nightmare, config.login);
+  const runner = new RunnerClass(nightmare);
 
-  // loop through all items, performing the configured action(s) at each one
-  for (let i in items) {
-    await performAction(nightmare, config.action, items[i]);
-  }
+  config.action.beforeTasks.forEach(task => runner.doBefore(task));
+  config.action.forEachTasks.forEach(task => runner.doForEach(task));
+  config.action.afterTasks.forEach(task => runner.doAfter(task));
+
+  await runner.run(items);
 
   await nightmare.end();
 };
