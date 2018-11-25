@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "target": "es2016",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "*": ["node_modules/*"]
+    },
+    "lib": ["es2017", "dom"]
+  },
+  "include": ["./src/**/**/*"]
+}
