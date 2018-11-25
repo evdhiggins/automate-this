@@ -1,11 +1,11 @@
 require("dotenv").config();
 
-import nightmare from "./ri/initializers/nightmare";
+import nightmare from "./automateThis/initializers/nightmare";
 
-import loadConfig from "./ri/config/loadConfig";
-import getItemsFromPage from "./ri/nightmare/getItemsFromPage";
-import login from "./ri/nightmare/login";
-import performAction from "./ri/nightmare/performAction";
+import loadConfig from "./config/loadConfig";
+import getItemsFromPage from "./automateThis/nightmare/getItemsFromPage";
+import login from "./automateThis/nightmare/login";
+import performAction from "./automateThis/nightmare/performAction";
 import { IItem } from "./types";
 
 const main = async (): Promise<void> => {
