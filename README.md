@@ -10,11 +10,11 @@ This script was was quickly updated so that it could be applied to a specific ta
 
 When given valid `.env` and `config.js` files the script does the following:
 
-1. Create a set of pages from which to obtain itemUrls (based on page config)
-2. Create a list of itemUrls provided from itemListConfig.
-3. Navigate to each page defined in step 1, extracting item urls; concatenate the page itemUrls to those found in itemListConfig.
+1. Create a set of pages from which to obtain `items` (based on page config)
+2. Create an array of `items` from provided `itemBases` via `itemCreator` in itemListConfig
+3. Navigate to each page defined in step 1, creating items (containing only `url` property); concatenate the page items to those created in itemListConfig
 4. Sign-in, using the credentials / selectors defined in `.env` / `config.js`
-5. Navigate to each itemUrl, and execute the provided functions within `actionConfig`
+5. Navigate to each `item.url`, and execute the provided functions within `actionConfig`
 
 ## Configuration details
 

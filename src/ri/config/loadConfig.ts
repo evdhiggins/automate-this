@@ -64,10 +64,10 @@ const makeItemListConfig = (
   customConfig: IItemListConfig = {}
 ): IItemListConfig => {
   const itemListConfig: IItemListConfig = {
-    urlBases: customConfig.urlBases || defaultConfig.urlBases,
-    urlCreator: customConfig.urlCreator || defaultConfig.urlCreator
+    itemBases: customConfig.itemBases || defaultConfig.itemBases,
+    itemCreator: customConfig.itemCreator || defaultConfig.itemCreator
   };
-  itemListConfig.urls = itemListConfig.urlCreator(itemListConfig.urlBases);
+  itemListConfig.items = itemListConfig.itemCreator(itemListConfig.itemBases);
 
   return itemListConfig;
 };

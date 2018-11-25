@@ -1,10 +1,10 @@
-import { IPage } from "../../types";
+import { IPage, IItem } from "../../types";
 
 function browserScript(pageConfig: IPage) {
   const itemNodes: NodeList = document.querySelectorAll(
     pageConfig.itemSelector
   );
-  const urls: string[] = [];
+  const items: IItem[] = [];
 
   const runCustomFunction = (parent: HTMLElement, funcBody: string): any => {
     const func = new Function("item", "parentElement", funcBody);
@@ -24,12 +24,12 @@ function browserScript(pageConfig: IPage) {
           pageConfig.itemUrl.prop
         ];
       }
-      urls.push(url);
+      items.push({ url });
     } catch (e) {
       // Do nothing if error occurs
     }
   });
-  return urls;
+  return items;
 }
 
 /**
@@ -38,17 +38,17 @@ function browserScript(pageConfig: IPage) {
  * @param pageConfig
  * @param urlsToSkip An array of itemUrl's
  */
-const getUrls = async (
+const getItemsFromPage = async (
   nightmare: any,
   pageConfig: IPage
-): Promise<string[]> => {
+): Promise<IItem[]> => {
   await nightmare.goto(pageConfig.page);
   await nightmare.wait(pageConfig.waitBeforeSelector);
 
   // Manually wait for 1 sec
   await nightmare.wait(1000);
-  const urls: string[] = await nightmare.evaluate(browserScript, pageConfig);
-  return urls;
+
+  return await nightmare.evaluate(browserScript, pageConfig);
 };
 
-export default getUrls;
+export default getItemsFromPage;

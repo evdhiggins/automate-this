@@ -1,11 +1,11 @@
-import { IActionConfig } from "src/types";
+import { IActionConfig, IItem } from "src/types";
 
 const performAction = async (
   nightmare: any,
   actionConfig: IActionConfig,
-  url: string
+  item: IItem
 ): Promise<void> => {
-  await nightmare.goto(url);
+  await nightmare.goto(item.url);
   await nightmare.wait(actionConfig.waitBeforeSelector);
 
   if (typeof actionConfig.nightmareFunc === "function")

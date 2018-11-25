@@ -11,9 +11,9 @@ export const page: IPage = {
 };
 
 export const itemListConfig: IItemListConfig = {
-  urlBases: [],
-  urlCreator: () => [],
-  urls: []
+  itemBases: [],
+  itemCreator: () => [],
+  items: []
 };
 
 export const loginConfig: ILoginConfig = {

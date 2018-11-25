@@ -1,3 +1,7 @@
+export interface IItem {
+  [index: string]: any;
+}
+
 export interface ISelector {
   /**
    * A CSS selector string used to locate the corresponding item field element
@@ -52,17 +56,17 @@ export interface IItemListConfig {
   /**
    * The bases used to construct additional item urls (e.g. a list of product ID's read from disk)
    */
-  urlBases?: any[];
+  itemBases?: any[];
 
   /**
    * The function used to create Urls from the urlBases
    */
-  urlCreator?: (urlBases: any[]) => string[];
+  itemCreator?: (itemBases: any[]) => IItem[];
 
   /**
    * A list of custom item urls, or the returned value for urlCreator
    */
-  urls?: string[];
+  items?: IItem[];
 }
 
 export interface ILoginConfig {
