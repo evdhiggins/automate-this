@@ -79,7 +79,13 @@ class default_1 {
         return __awaiter(this, void 0, void 0, function* () {
             for (let record of records) {
                 if (record.isUpdated) {
-                    this.table.update(record.getId(), record.getFields());
+                    this.table.update(record.getId(), record.getFields()).catch(e => {
+                        console.error('\n');
+                        console.error(`Error updating Airtable row ${record.getId()}:`);
+                        console.error(`Message: ${e.message}`);
+                        console.error(`Attempted update values: `);
+                        console.error(record.getFields());
+                    });
                     yield sleep(300);
                 }
             }

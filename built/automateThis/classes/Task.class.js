@@ -26,7 +26,14 @@ class default_1 {
                 expressionValue = false;
             }
             if (expressionValue) {
-                yield this.task.func(row, nightmare, update);
+                try {
+                    yield this.task.func(row, nightmare, update);
+                }
+                catch (e) {
+                    console.error("\n");
+                    console.error("Error occurred performing task:");
+                    console.error(e.message);
+                }
             }
         });
     }

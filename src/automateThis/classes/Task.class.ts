@@ -23,7 +23,13 @@ export default class {
       expressionValue = false;
     }
     if (expressionValue) {
-      await this.task.func(row, nightmare, update);
+      try {
+        await this.task.func(row, nightmare, update);
+      } catch (e) {
+        console.error("\n");
+        console.error("Error occurred performing task:");
+        console.error(e.message);
+      }
     }
   }
 }

@@ -93,7 +93,14 @@ export default class {
   public async updateAll(records: TaskRecordClass[]): Promise<void> {
     for (let record of records) {
       if (record.isUpdated) {
-        this.table.update(record.getId(), record.getFields());
+        this.table.update(record.getId(), record.getFields()).catch(e => {
+          console.error('\n');
+          console.error(`Error updating Airtable row ${record.getId()}:`);
+          console.error(`Message: ${e.message}`);
+          console.error(`Attempted update values: `);
+          console.error(record.getFields());
+
+        });
         await sleep(300);
       }
     }
