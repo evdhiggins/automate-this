@@ -3,24 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "./built/main.js",
+  "types": "/src/index.d.ts",
   "scripts": {
-    "build": " npm run build:src",
+    "build": "npm run build:types && npm run build:src",
     "build:src": "npx tsc -p .",
-    "start": "node ./built/main.js",
-    "postinstall": "npm run build"
+    "build:types": "npx ttw deploy"
   },
   "author": "Evan Higgins <evdhiggins@gmail.com>",
   "repository": "github:evdhiggins/automate-this",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^6.1.0",
-    "lodash": "^4.17.11",
+    "airtable": "^0.5.8",
     "nightmare": "^3.0.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.118",
     "@types/nightmare": "^2.10.4",
     "@types/node": "^10.12.10",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "typescript-type-writer": "git+https://github.com/evdhiggins/typescript-type-writer.git"
   }
 }
