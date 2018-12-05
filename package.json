@@ -1,9 +1,9 @@
 {
   "name": "automate-this",
   "version": "1.0.0",
-  "description": "",
+  "description": "Broilerplate-providing automation module for Airtable projects",
   "main": "./built/main.js",
-  "types": "/src/index.d.ts",
+  "types": "./src/index.d.ts",
   "scripts": {
     "build": "npm run build:types && npm run build:src",
     "build:src": "npx tsc -p .",
@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@types/nightmare": "^2.10.4",
-    "@types/node": "^10.12.10",
-    "typescript": "^3.1.6",
+    "@types/node": "^10.12.12",
+    "typescript": "^3.2.1",
     "typescript-type-writer": "git+https://github.com/evdhiggins/typescript-type-writer.git"
   }
 }
