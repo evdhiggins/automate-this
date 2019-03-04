@@ -1,19 +1,23 @@
 {
-  "name": "automate-this",
-  "version": "1.0.0",
+  "name": "@evdhiggins/automate-this",
+  "version": "0.0.1",
   "description": "Broilerplate-providing automation module for Airtable projects",
   "main": "./built/main.js",
   "types": "./src/index.d.ts",
   "scripts": {
     "build": "npm run build:types && npm run build:src",
     "build:src": "npx tsc -p .",
-    "build:types": "npx ttw deploy"
+    "build:types": "npx ttw deploy",
+    "publish:patch": "npm run build && npm version patch && npm publish"
   },
   "author": "Evan Higgins <evdhiggins@gmail.com>",
-  "repository": "github:evdhiggins/automate-this",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evdhiggins/automate-this.git"
+  },
   "license": "MIT",
   "dependencies": {
-    "airtable": "^0.5.8",
+    "airtable": "^0.5.9",
     "nightmare": "^3.0.1"
   },
   "devDependencies": {
