@@ -1,6 +1,6 @@
 {
   "name": "@evdhiggins/automate-this",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Broilerplate-providing automation module for Airtable projects",
   "main": "./built/main.js",
   "types": "./src/index.d.ts",
